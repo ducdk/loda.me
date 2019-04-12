@@ -4,7 +4,7 @@
 // CSS
 import "~/assets/css/dashboard.css";
 
-import DefaultLayout from "~/layouts/Default.vue";
+import Default from "~/layouts/Default.vue";
 
 export default function(Vue, { router, head, isClient }) {
   head.link.push(
@@ -29,8 +29,7 @@ export default function(Vue, { router, head, isClient }) {
       href: "/assets/plugins/maps-google/plugin.css"
     }
   );
-  head.script.push({ src: "/assets/js/require.min.js" }, {});
-  head.script.push({ innerHTML: "requirejs.config({baseUrl: '.'})", type: "text/javascript" });
+  head.script.push({ src: "/assets/js/require.min.js" }, { innerHTML: "requirejs.config({baseUrl: '.'})", type: "text/javascript" });
   head.script.push(
     { src: "/assets/js/dashboard.js" },
     { src: "/assets/plugins/charts-c3/plugin.js" },
@@ -40,5 +39,5 @@ export default function(Vue, { router, head, isClient }) {
   );
 
   // Set default layout as a global component
-  Vue.component("Layout", DefaultLayout);
+  Vue.component("Default", Default);
 }
