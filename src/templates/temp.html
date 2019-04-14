@@ -1,0 +1,146 @@
+<h1 id="mở-đầu">
+  <a href="#m%E1%BB%9F-%C4%91%E1%BA%A7u" aria-hidden="true"><span class="myclass"></span></a>Mở đầu
+</h1>
+<p>
+  Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis
+  parturient montes, nascetur ridiculus mus.
+</p>
+<h2 id="ở-giữa">
+  <a href="#%E1%BB%9F-gi%E1%BB%AFa" aria-hidden="true"><span class="myclass"></span></a>Ở giữa
+</h2>
+<p><img src="/demo/photos/adrian-infernus-281832-500.jpg" alt="Image" /></p>
+<p>
+  Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec,
+  vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.
+</p>
+<p>
+  Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean
+  leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.
+</p>
+<h3 id="tiêu-đề-3">
+  <a href="#ti%C3%AAu-%C4%91%E1%BB%81-3" aria-hidden="true"><span class="myclass"></span></a>Tiêu đề 3
+</h3>
+<p>
+  Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet.
+  Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui.
+</p>
+<pre class="language-java"><span class="token comment">// Mike Scott</span>
+<span class="token comment">// 2d array manipulation examples</span>
+
+<span class="token comment">//import</span>
+<span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>awt</span><span class="token punctuation">.</span><span class="token class-name">Color</span><span class="token punctuation">;</span>
+
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">FilterExample</span>
+<span class="token punctuation">{</span>
+	<span class="token comment">/*
+	 *pre: image != null, image.length > 1, image[0].length > 1
+	 *	image is a rectangular matrix, neighberhoodSize > 0
+	 *post: return a smoothed version of image
+	 */</span>
+	<span class="token keyword">public</span> <span class="token class-name">Color</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">smooth</span><span class="token punctuation">(</span><span class="token class-name">Color</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> image<span class="token punctuation">,</span> <span class="token keyword">int</span> neighberhoodSize<span class="token punctuation">)</span>
+	<span class="token punctuation">{</span>	<span class="token comment">//check precondition</span>
+		<span class="token keyword">assert</span> image <span class="token operator">!=</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> image<span class="token punctuation">.</span>length <span class="token operator">></span> <span class="token number">1</span> <span class="token operator">&amp;&amp;</span> image<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>length <span class="token operator">></span> <span class="token number">1</span>
+				<span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span> neighberhoodSize <span class="token operator">></span> <span class="token number">0</span> <span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token function">rectangularMatrix</span><span class="token punctuation">(</span> image <span class="token punctuation">)</span>
+				<span class="token operator">:</span> <span class="token string">"Violation of precondition: smooth"</span><span class="token punctuation">;</span>
+
+		<span class="token class-name">Color</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> result <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Color</span><span class="token punctuation">[</span>image<span class="token punctuation">.</span>length<span class="token punctuation">]</span><span class="token punctuation">[</span>image<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>length<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+		<span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> row <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> row <span class="token operator">&lt;</span> image<span class="token punctuation">.</span>length<span class="token punctuation">;</span> row<span class="token operator">++</span><span class="token punctuation">)</span>
+		<span class="token punctuation">{</span>	<span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> col <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> col <span class="token operator">&lt;</span> image<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>length<span class="token punctuation">;</span> col<span class="token operator">++</span><span class="token punctuation">)</span>
+			<span class="token punctuation">{</span>	result<span class="token punctuation">[</span>row<span class="token punctuation">]</span><span class="token punctuation">[</span>col<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">aveOfNeighbors</span><span class="token punctuation">(</span>image<span class="token punctuation">,</span> row<span class="token punctuation">,</span> col<span class="token punctuation">,</span> neighberhoodSize<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+		<span class="token punctuation">}</span>
+
+		<span class="token keyword">return</span> result<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+
+
+	<span class="token comment">// helper method that determines the average color of a neighberhood</span>
+	<span class="token comment">// around a particular cell.</span>
+	<span class="token keyword">private</span> <span class="token class-name">Color</span> <span class="token function">aveOfNeighbors</span><span class="token punctuation">(</span><span class="token class-name">Color</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> image<span class="token punctuation">,</span> <span class="token keyword">int</span> row<span class="token punctuation">,</span> <span class="token keyword">int</span> col<span class="token punctuation">,</span> <span class="token keyword">int</span> neighberhoodSize<span class="token punctuation">)</span>
+	<span class="token punctuation">{</span>	<span class="token keyword">int</span> numNeighbors <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+		<span class="token keyword">int</span> red <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+		<span class="token keyword">int</span> green <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+		<span class="token keyword">int</span> blue <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+		<span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> r <span class="token operator">=</span> row <span class="token operator">-</span> neighberhoodSize<span class="token punctuation">;</span> r <span class="token operator">&lt;=</span> row <span class="token operator">+</span> neighberhoodSize<span class="token punctuation">;</span> r<span class="token operator">++</span><span class="token punctuation">)</span>
+		<span class="token punctuation">{</span>	<span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> c <span class="token operator">=</span> col <span class="token operator">-</span> neighberhoodSize<span class="token punctuation">;</span> c <span class="token operator">&lt;=</span> col <span class="token operator">+</span> neighberhoodSize<span class="token punctuation">;</span> c<span class="token operator">++</span><span class="token punctuation">)</span>
+			<span class="token punctuation">{</span>	<span class="token keyword">if</span><span class="token punctuation">(</span> <span class="token function">inBounds</span><span class="token punctuation">(</span> image<span class="token punctuation">,</span> r<span class="token punctuation">,</span> c <span class="token punctuation">)</span> <span class="token punctuation">)</span>
+				<span class="token punctuation">{</span>	numNeighbors<span class="token operator">++</span><span class="token punctuation">;</span>
+					red <span class="token operator">+=</span> image<span class="token punctuation">[</span>r<span class="token punctuation">]</span><span class="token punctuation">[</span>c<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">getRed</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+					green <span class="token operator">+=</span> image<span class="token punctuation">[</span>r<span class="token punctuation">]</span><span class="token punctuation">[</span>c<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">getGreen</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+					blue <span class="token operator">+=</span> image<span class="token punctuation">[</span>r<span class="token punctuation">]</span><span class="token punctuation">[</span>c<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">getBlue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+				<span class="token punctuation">}</span>
+			<span class="token punctuation">}</span>
+		<span class="token punctuation">}</span>
+
+		<span class="token keyword">assert</span> numNeighbors <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">;</span>
+		<span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Color</span><span class="token punctuation">(</span> red <span class="token operator">/</span> numNeighbors<span class="token punctuation">,</span> green <span class="token operator">/</span> numNeighbors<span class="token punctuation">,</span> blue <span class="token operator">/</span> numNeighbors <span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+
+	<span class="token comment">//helper method to determine if given coordinates are in bounds</span>
+	<span class="token keyword">private</span> <span class="token keyword">boolean</span> <span class="token function">inBounds</span><span class="token punctuation">(</span><span class="token class-name">Color</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> image<span class="token punctuation">,</span> <span class="token keyword">int</span> row<span class="token punctuation">,</span> <span class="token keyword">int</span> col<span class="token punctuation">)</span>
+	<span class="token punctuation">{</span>	<span class="token keyword">return</span> <span class="token punctuation">(</span>row <span class="token operator">>=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span>row <span class="token operator">&lt;=</span> image<span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span>col <span class="token operator">>=</span> <span class="token number">0</span><span class="token punctuation">)</span>
+				<span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span>col <span class="token operator">&lt;</span> image<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>length<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+
+	<span class="token comment">//private method to ensure mat is rectangular</span>
+	<span class="token keyword">private</span> <span class="token keyword">boolean</span> <span class="token function">rectangularMatrix</span><span class="token punctuation">(</span> <span class="token class-name">Color</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> mat <span class="token punctuation">)</span>
+	<span class="token punctuation">{</span>	<span class="token keyword">boolean</span> isRectangular <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+		<span class="token keyword">int</span> row <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+		<span class="token keyword">final</span> <span class="token keyword">int</span> COLUMNS <span class="token operator">=</span> mat<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>length<span class="token punctuation">;</span>
+
+		<span class="token keyword">while</span><span class="token punctuation">(</span> isRectangular <span class="token operator">&amp;&amp;</span> row <span class="token operator">&lt;</span> mat<span class="token punctuation">.</span>length <span class="token punctuation">)</span>
+		<span class="token punctuation">{</span>	isRectangular <span class="token operator">=</span> <span class="token punctuation">(</span> mat<span class="token punctuation">[</span>row<span class="token punctuation">]</span><span class="token punctuation">.</span>length <span class="token operator">==</span> COLUMNS <span class="token punctuation">)</span><span class="token punctuation">;</span>
+			row<span class="token operator">++</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+
+		<span class="token keyword">return</span> isRectangular<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span></pre>
+<p>
+  Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc,
+  blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus.
+</p>
+<p>
+  Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris
+  sit amet nibh. Donec sodales sagittis magna.
+</p>
+<p>
+  Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero. Fusce vulputate eleifend sapien. Vestibulum purus
+  quam, scelerisque ut, mollis sed, nonummy id, metus. Nullam accumsan lorem in dui.
+</p>
+<p>
+  Cras ultricies mi eu turpis hendrerit fringilla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In ac dui
+  quis mi consectetuer lacinia. Nam pretium turpis et arcu.
+</p>
+<p>
+  Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum. Sed aliquam ultrices mauris. Integer ante arcu, accumsan a, consectetuer
+  eget, posuere ut, mauris. Praesent adipiscing. Phasellus ullamcorper ipsum rutrum nunc. Nunc nonummy metus.
+</p>
+<p>
+  Vestibulum volutpat pretium libero. Cras id dui. Aenean ut eros et nisl sagittis vestibulum. Nullam nulla eros, ultricies sit amet, nonummy id,
+  imperdiet feugiat, pede. Sed lectus. Donec mollis hendrerit risus. Phasellus nec sem in justo pellentesque facilisis.
+</p>
+<p>
+  Etiam imperdiet imperdiet orci. Nunc nec neque. Phasellus leo dolor, tempus non, auctor et, hendrerit quis, nisi. Curabitur ligula sapien, tincidunt
+  non, euismod vitae, posuere imperdiet, leo. Maecenas malesuada. Praesent congue erat at massa.
+</p>
+<h4 id="kết-thúc">
+  <a href="#k%E1%BA%BFt-th%C3%BAc" aria-hidden="true"><span class="myclass"></span></a>Kết thúc
+</h4>
+<p>
+  Sed cursus turpis vitae tortor. Donec posuere vulputate arcu. Phasellus accumsan cursus velit. Vestibulum ante ipsum primis in faucibus orci luctus
+  et ultrices posuere cubilia Curae; Sed aliquam, nisi quis porttitor congue, elit erat euismod orci, ac placerat dolor lectus quis orci.
+</p>
+<p>
+  Phasellus consectetuer vestibulum elit. Aenean tellus metus, bibendum sed, posuere ac, mattis non, nunc. Vestibulum fringilla pede sit amet augue.
+  In turpis. Pellentesque posuere. Praesent turpis.
+</p>
+<p>
+  Aenean posuere, tortor sed cursus feugiat, nunc augue blandit nunc, eu sollicitudin urna dolor sagittis lacus. Donec elit libero, sodales nec,
+  volutpat a, suscipit non, turpis. Nullam sagittis. Suspendisse pulvinar, augue ac venenatis condimentum, sem libero volutpat nibh, nec pellentesque
+  velit pede quis nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Fusce id purus. Ut varius tincidunt
+  libero. Phasellus dolor. Maecenas vestibulum mollis
+</p>

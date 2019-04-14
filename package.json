@@ -7,10 +7,12 @@
     "explore": "gridsome explore"
   },
   "dependencies": {
-    "bootstrap": "^4.3.1",
+    "@gridsome/remark-prismjs": "0.0.5",
+    "@gridsome/source-filesystem": "^0.3.0",
+    "@gridsome/transformer-remark": "^0.2.1",
+    "@gridsome/transformer-yaml": "^0.1.0",
     "gridsome": "^0.5.0",
-    "jquery": "^3.4.0",
-    "popper.js": "^1.15.0"
+    "vue-infinite-scroll": "^2.0.2"
   },
   "devDependencies": {
     "node-sass": "^4.11.0",

@@ -5,19 +5,12 @@
 // Changes here require a server restart.
 // To restart press CTRL + C in terminal and run `gridsome develop`
 
-module.exports = function (api) {
+module.exports = function(api) {
   api.loadSource(store => {
-    store.addMetaData('githubUrl', 'https://github.com/loda-kun?tab=repositories')
-
+    store.addMetaData("githubUrl", "https://github.com/loda-kun?tab=repositories");
 
     // Use the Data store API here: https://gridsome.org/docs/data-store-api
 
-    const menus = store.addContentType('Menu');
-    menus.addNode({
-      id: '1',
-      title: 'The author'
-    })
-
-  })
-  
-}
+    
+  });
+};

@@ -3,13 +3,22 @@
     <div class="header py-4">
       <div class="container">
         <div class="d-flex">
-          <a class="header-brand" href="/index.html">
+          <g-link class="header-brand" to="/">
+            <g-image src="~/assets/images/logo.png" class="header-brand-img" alt="loda logo"/>
+              <!-- <span style="color: #4c4c4c; font-size: 1.1em; font-family: 'Open Sans', sans-serif;">Loda</span> -->
+            <!-- <g-image src="~/assets/images/loda.png" class="header-brand-img" alt="loda logo"/> -->
+          </g-link>
+          <!-- <a class="header-brand" href="/index.html">
             <img src="/demo/brand/tabler.svg" class="header-brand-img" alt="tabler logo">
-          </a>
+          </a>-->
 
           <div class="d-flex order-lg-2 ml-auto">
             <div class="nav-item d-none d-md-flex">
-              <a href="githubUrl" class="btn btn-sm btn-outline-primary" target="_blank">Source code</a>
+              <a
+                :href="$static.metaData.githubUrl"
+                class="btn btn-sm btn-outline-primary"
+                target="_blank"
+              >Source code</a>
             </div>
           </div>
 
@@ -40,8 +49,10 @@
                 <i class="fe fe-search"></i>
               </div>
             </form>
-          </div> -->
-          <!-- <div class="col-lg order-lg-first">{% include menu.html %}</div> -->
+          </div>-->
+          <div class="col-lg order-lg-first">
+            <Menu/>
+          </div>
         </div>
       </div>
     </div>
@@ -58,7 +69,11 @@ query {
 
 
 <script>
+import Menu from "~/components/Menu.vue";
 export default {
-  name: 'Header'
-}
+  name: "Header",
+  components: {
+    Menu
+  }
+};
 </script>

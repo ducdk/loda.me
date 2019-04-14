@@ -1,50 +1,93 @@
 <template>
-<ul class="nav nav-tabs border-0 flex-column flex-lg-row">
-	{% assign menu = site.data.menu %}
-	{% assign menu_levels = layout.menu | default: page.menu | split: '.' %}
+  <ul class="nav nav-tabs border-0 flex-column flex-lg-row">
+    <li v-for="(data, i) in menu" :key="i" class="nav-item" :class="{ dropdown: data.childs !== undefined }">
+      <g-link
+        v-if="data.url !== undefined"
+        :to="data.url"
+        class="nav-link"
+        :data-toggle="data.childs !== undefined ? 'dropdown' : undefined"
+      >
+        <i v-if="data.icon" :class="data.icon" class="mr-1" ></i>
+        {{data.name}}
+      </g-link>
+      <a
+        v-else
+        href="javascript:void(0)"
+        class="nav-link"
+        :data-toggle="data.childs !== undefined ? 'dropdown' : undefined"
+      >
+        <i v-if="data.icon" :class="data.icon"></i>
+        {{data.name}}
+      </a>
 
-	{% for item in menu %}
-	<li class="nav-item{% if data.subpages %} dropdown{% endif %}">
-		{% assign index = item[0] %}
-		{% assign data = item[1] %}
-		<a href="
-        {% if data.url %}
-            {% if data.url != '#' %} 
-                {{ site.base }}/
-            {% endif %}
-                {{ data.url }}
-        {% else %}
-            javascript:void(0)
-        {% endif %}"
-        
-        class="nav-link 
-            {% if menu_levels[0] == index %} active {% endif %}
-            {% if data.disabled %} disabled {% endif %}"
-            
-            {% if data.subpages %} data-toggle="dropdown" {% endif %}>
-                {% if data.icon %}<i class="{{ data.icon }}"></i>{% endif %} 
-                {{ data.name }}
-                {% if data.count %} <span class="badge badge-pill bg-primary text-white ml-2">{{ data.count }}</span>{% endif %}
-        </a>
-
-		{% if data.subpages %}
-			<div class="dropdown-menu dropdown-menu-arrow">
-				{% for subitem in data.subpages %}
-					{% assign subindex = subitem[0] %}
-					{% assign subdata = subitem[1] %}
-					<a href="{{ site.base }}/{{ subdata.url }}" class="dropdown-item {% if menu_levels[1] == subindex %}active{% endif %}">{{ subdata.name }}</a>
-				{% endfor %}
-			</div>
-		{% endif %}
-	</li>
-	{% endfor %}
-</ul>
+      <div v-if="data.childs" class="dropdown-menu dropdown-menu-arrow">
+        <g-link
+          v-for="(child, j) in data.childs"
+          :key="j"
+          :to="child.url"
+          class="dropdown-item"
+        >{{ child.name }}</g-link>
+      </div>
+    </li>
+  </ul>
 </template>
 
-<static-query>
-query {
-  metaData {
-    siteName
+
+<script>
+export default {
+  name: "Menu",
+  data() {
+    return {
+      menu: [
+        {
+          name: "Home",
+          icon: "fas fa-home",
+          url: "/"
+        },
+        {
+          name: "Java",
+          icon: "fab fa-java",
+          url: "/java",
+          // childs: [
+          //   {
+          //     name: "Java cơ bản",
+          //     icon: "fe fe-box",
+          //     url: "/java#basic"
+          //   },
+          //   {
+          //     name: "Java nâng cao",
+          //     icon: "fe fe-pie-chart",
+          //     url: "/java#advanced"
+          //   }
+          // ]
+        },
+        {
+          name: "Spring Boot",
+          icon: "fas fa-leaf",
+          url: "/spring-boot",
+        },
+        {
+          name: "Hibernate",
+          icon: "fas fa-database",
+          url: "/hibernate",
+        },
+        {
+          name: "Vue.js",
+          icon: "fab fa-vuejs",
+          url: "/vuejs",
+        },
+        {
+          name: "Frontend",
+          icon: "fab fa-internet-explorer",
+          url: "/frontend",
+        },
+        {
+          name: "Others",
+          icon: "fas fa-dice-d6",
+          url: "/others",
+        },
+      ]
+    };
   }
-}
-</static-query>
+};
+</script>
