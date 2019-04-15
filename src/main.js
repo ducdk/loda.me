@@ -5,7 +5,7 @@
 import "prismjs/themes/prism.css";
 import "~/assets/css/loda.css";
 
-import infiniteScroll from 'vue-infinite-scroll'
+import infiniteScroll from "vue-infinite-scroll";
 import Default from "~/layouts/Default.vue";
 import List from "~/layouts/List.vue";
 
@@ -37,11 +37,12 @@ export default function(Vue, { router, head, isClient }) {
       href: "/assets/plugins/maps-google/plugin.css"
     }
   );
-
   head.script.push({ innerHTML: "var require = { baseUrl:  '/'};" });
   head.script.push(
     { src: "/assets/js/require.min.js" },
-    { src: "/assets/js/dashboard.js" }
+    { src: "/assets/js/dashboard.js" },
+    // { src: "/assets/js/fb-sdk.js" , async: true, defer: true,},
+    // { src: "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2&appId=2157004821059773&autoLogAppEvents=1", async: true, defer: true, crossorigin: "anonymous" }
     // { src: "/assets/plugins/charts-c3/plugin.js" },
     // { src: "/assets/plugins/maps-google/plugin.js" },
     // { src: "/assets/plugins/input-mask/plugin.js" },

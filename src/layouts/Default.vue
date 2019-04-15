@@ -3,7 +3,8 @@
     <div class="flex-fill">
       <!-- header -->
       <Header/>
-
+      
+      <FbPlugin/>
       <!-- title -->
       <div v-if="title" class="my-3 my-md-5">
         <div class="container">
@@ -14,7 +15,9 @@
       </div>
 
       <!-- content -->
-      <slot/>
+      <div>
+        <slot/>
+      </div>
       <!-- end content -->
     </div>
 
@@ -25,8 +28,9 @@
 
 <script>
 import Base from "~/layouts/Base.vue";
-import Header from "~/components/Header.vue";
-import Footer from "~/components/Footer.vue";
+import Header from "~/components/base/Header.vue";
+import Footer from "~/components/base/Footer.vue";
+import FbPlugin from '~/components/plugin/FbPlugin.vue'
 
 export default {
   props: {
@@ -35,7 +39,8 @@ export default {
   components: {
     Base,
     Header,
-    Footer
+    Footer,
+    FbPlugin
   }
 };
 </script>

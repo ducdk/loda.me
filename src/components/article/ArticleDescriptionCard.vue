@@ -43,28 +43,20 @@
       <p>{{ article.description }}</p>
 
       <div class="sticky-top" ref="share">
-        <div class="h6 sticky-top">Share</div>
-
-        <button type="button" class="sticky-top btn btn-icon btn-facebook mr-1">
-          <i class="fab fa-facebook-f"></i>
-        </button>
-        <button type="button" class="sticky-top btn btn-icon btn-twitter mr-1">
-          <i class="fab fa-twitter"></i>
-        </button>
-        <button type="button" class="sticky-top btn btn-icon btn-google mr-1">
-          <i class="fab fa-google"></i>
-        </button>
-        <button type="button" class="sticky-top btn btn-icon btn-github mr-1">
-          <i class="fab fa-github"></i>
-        </button>
+        <SocialShare/>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import SocialShare from "~/components/plugin/SocialShare.vue";
+
 export default {
   name: "DescriptionCard",
+  components: {
+    SocialShare
+  },
   props: {
     sticky: Boolean,
     title: String,
@@ -76,11 +68,15 @@ export default {
         this.$refs.card.scrollHeight +
         this.$refs.card.getBoundingClientRect().top +
         document.documentElement.scrollTop;
+
+      var marginTop = document.getElementById("menu-bar").scrollHeight;
+      offset = offset - marginTop;
       if (window.scrollY > offset) {
         this.$refs.share.style.position = "fixed";
-        this.$refs.share.style.marginTop = "10px";
+        this.$refs.share.style.marginTop = marginTop + 10 + "px";
       } else {
         this.$refs.share.style.position = "relative";
+        this.$refs.share.style.marginTop = "0px";
       }
     }
   },

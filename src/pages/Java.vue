@@ -1,5 +1,5 @@
 <template>
-  <List title="Java" :articles="$page.articles"/>
+  <List title="Java" :articles="$page.articles" />
 </template>
 
 <script>

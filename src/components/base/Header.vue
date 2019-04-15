@@ -5,7 +5,7 @@
         <div class="d-flex">
           <g-link class="header-brand" to="/">
             <g-image src="~/assets/images/logo.png" class="header-brand-img" alt="loda logo"/>
-              <!-- <span style="color: #4c4c4c; font-size: 1.1em; font-family: 'Open Sans', sans-serif;">Loda</span> -->
+            <!-- <span style="color: #4c4c4c; font-size: 1.1em; font-family: 'Open Sans', sans-serif;">Loda</span> -->
             <!-- <g-image src="~/assets/images/loda.png" class="header-brand-img" alt="loda logo"/> -->
           </g-link>
           <!-- <a class="header-brand" href="/index.html">
@@ -34,10 +34,12 @@
       </div>
     </div>
 
-    <div class="header collapse d-lg-flex p-0" id="headerMenuCollapse">
-      <div class="container">
-        <div class="row align-items-center">
-          <!-- <div class="col-lg-3 ml-auto">
+
+    <div id="menu-bar" ref="menu" class="sticky-menu">
+      <div class="header collapse d-lg-flex p-0" id="headerMenuCollapse">
+        <div class="container">
+          <div class="row align-items-center">
+            <!-- <div class="col-lg-3 ml-auto">
             <form class="input-icon my-3 my-lg-0">
               <input
                 type="search"
@@ -49,13 +51,16 @@
                 <i class="fe fe-search"></i>
               </div>
             </form>
-          </div>-->
-          <div class="col-lg order-lg-first">
-            <Menu/>
+            </div>-->
+            <div class="col-lg order-lg-first">
+              <Menu/>
+            </div>
           </div>
         </div>
       </div>
     </div>
+
+
   </div>
 </template>
 
@@ -69,11 +74,34 @@ query {
 
 
 <script>
-import Menu from "~/components/Menu.vue";
+import Menu from "~/components/base/Menu.vue";
 export default {
   name: "Header",
   components: {
     Menu
+  },
+  methods: {
+    onMenuScroll() {
+      if (window.scrollY > this.$refs.menu.getBoundingClientRect().top) {
+        this.$refs.menu.style.position = "fixed";
+      } else {
+        this.$refs.menu.style.position = "relative";
+      }
+    }
+  },
+  created() {
+    window.addEventListener("scroll", this.onMenuScroll);
+  },
+  destroyed() {
+    window.removeEventListener("scroll", this.onMenuScroll);
   }
 };
 </script>
+
+<style scoped>
+.sticky-menu{
+  width: 100%;
+  top: 0px;
+  z-index: 2000;
+}
+</style>

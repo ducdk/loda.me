@@ -6,7 +6,12 @@
           <ArticleContentCard :article="$page.article"/>
         </div>
         <div class="col-lg-3 mb-4">
-          <ArticleDescriptionCard sticky title="Phụ lục" :article="$page.article"/>
+          <ArticleDescriptionCard title="Phụ lục" :article="$page.article"/>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-9">
+          <FbComment :href="this.$page.article.path"/>
         </div>
       </div>
     </div>
@@ -16,6 +21,7 @@
 <script>
 import ArticleDescriptionCard from "~/components/article/ArticleDescriptionCard.vue";
 import ArticleContentCard from "~/components/article/ArticleContentCard.vue";
+import FbComment from "~/components/plugin/FbComment.vue";
 
 export default {
   metaInfo() {
@@ -25,7 +31,8 @@ export default {
   },
   components: {
     ArticleContentCard,
-    ArticleDescriptionCard
+    ArticleDescriptionCard,
+    FbComment,
   }
 };
 </script>
@@ -39,6 +46,7 @@ export default {
       content
       image
       timeToRead
+      path
     }
   }
 </page-query>

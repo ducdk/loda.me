@@ -1,5 +1,5 @@
 <template>
-  <List title="Blog" :articles="$page.articles"/>
+  <List title="Blog" :articles="$page.articles" :infinity="false"/>
 </template>
 
 <script>

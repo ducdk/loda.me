@@ -13,7 +13,8 @@ import ArticleCard from "~/components/article/ArticleCard.vue";
 export default {
   name: "ArticleList",
   props: {
-    articles: Object
+    articles: Object,
+    busy: Boolean
   },
   components: {
     ArticleCard
@@ -21,13 +22,12 @@ export default {
   data() {
     return {
       datas: [],
-      page: 0,
-      busy: false
+      page: 0
     };
   },
   methods: {
     loadMore() {
-      if (this.articles.edges.length > this.page * 10) {
+      if (!this.busy && this.articles.edges.length > this.page * 10) {
         setTimeout(() => {
           this.datas = [
             ...this.datas,

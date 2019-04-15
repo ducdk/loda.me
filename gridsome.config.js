@@ -6,6 +6,8 @@
 
 module.exports = {
   siteName: "loda.me",
+  siteUrl: 'https://loda.me',
+  siteDescription: 'Chia sẻ, hướng dẫn lập trình miễn phí và chất lượng nhất.',
   plugins: [
     {
       use: "@gridsome/source-filesystem",
@@ -13,6 +15,12 @@ module.exports = {
         path: "article/_posts/**/*.md",
         typeName: "Article",
         route: "/:year/:month/:day/:slug"
+      }
+    },
+    {
+      use: '@gridsome/plugin-google-analytics',
+      options: {
+        id: 'UA-XXXXXXXXX-X'
       }
     }
   ],
