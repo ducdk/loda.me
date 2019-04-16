@@ -1,12 +1,20 @@
 <template>
-  <List title="Blog" :articles="$page.articles" :infinity="false"/>
+  <Default>
+    <div>
+    <Card title="HAHA">Hello</Card>
+    </div>
+  </Default>
 </template>
 
 <script>
+import Card from "~/components/cards/Card.vue";
 
 export default {
   metaInfo: {
     title: "Loda.me!"
+  },
+  components: {
+    Card
   }
 };
 </script>
