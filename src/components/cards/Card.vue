@@ -3,7 +3,7 @@
     <!-- status -->
     <div class="card-status" :class="color"></div>
 
-    <div class="card-header">
+    <div class="card-header" :class="{'d-none': hideTitle}">
       <!-- title -->
       <h3 class="card-title">{{title}}</h3>
 
@@ -19,7 +19,9 @@
     </div>
 
     <!-- content -->
-    <div class="card-body"><slot/></div>
+    <div class="card-body" :class="bodyClass">
+      <slot/>
+    </div>
   </div>
 </template>
 
@@ -28,10 +30,12 @@ export default {
   name: "Card",
   props: {
     title: String,
-    color: {
-      type: String,
-      default: ""
+    hideTitle: {
+      type: Boolean,
+      default: false
     },
+    color: String,
+    bodyClass: Object,
     option: Boolean
   }
 };
