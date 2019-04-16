@@ -20,7 +20,7 @@ query Article {
         date (format: "D MMMM, YYYY")
         title
         description
-        image
+        image (width: 400, quality: 90)
         timeToRead
         path
       }

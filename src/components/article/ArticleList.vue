@@ -60,12 +60,12 @@ export default {
   created() {
     this.datas = this.articles.edges.slice(0, 10);
     this.page += 1;
-    if (process.isClient) {
+    if (process.isClient && this.infinity) {
       window.addEventListener("scroll", this.onScroll);
     }
   },
   destroyed() {
-    if (process.isClient) {
+    if (process.isClient && this.infinity) {
       window.removeEventListener("scroll", this.onScroll);
     }
   }
