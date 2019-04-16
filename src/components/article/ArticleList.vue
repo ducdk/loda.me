@@ -60,10 +60,14 @@ export default {
   created() {
     this.datas = this.articles.edges.slice(0, 10);
     this.page += 1;
-    window.addEventListener("scroll", this.onScroll);
+    if (process.isClient) {
+      window.addEventListener("scroll", this.onScroll);
+    }
   },
   destroyed() {
-    window.removeEventListener("scroll", this.onScroll);
+    if (process.isClient) {
+      window.removeEventListener("scroll", this.onScroll);
+    }
   }
 };
 </script>

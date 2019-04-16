@@ -87,10 +87,14 @@ export default {
     }
   },
   created() {
-    window.addEventListener("scroll", this.onMenuScroll);
+    if (process.isClient) {
+      window.addEventListener("scroll", this.onMenuScroll);
+    }
   },
   destroyed() {
-    window.removeEventListener("scroll", this.onMenuScroll);
+    if (process.isClient) {
+      window.removeEventListener("scroll", this.onMenuScroll);
+    }
   }
 };
 </script>
