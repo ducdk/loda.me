@@ -85,7 +85,7 @@ Nhập tên cho `Project` của bạn, chọn thư mục lưu trữ cho nó, r�
 Bạn tạo xong chưa? xong rồi thì cùng nhìn vào cấu trúc của project nhé.
 Bạn sẽ thấy có 3 thư mục:
 
-![intellij](../../images/loda1553005203072/6.jpg){:class="center-image"}
+![intellij](../../images/loda1553005203072/6.JPG){:class="center-image"}
 
 * `.idea`: Thằng này là thư mục do `Intellij` tự tạo ra để chứa các file config của phần mềm này, bạn sẽ k cần quan tâm đến, để nó tự nhiên đê :D 
 
