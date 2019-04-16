@@ -5,7 +5,6 @@
 import "prismjs/themes/prism.css";
 import "~/assets/css/loda.css";
 
-import infiniteScroll from "vue-infinite-scroll";
 import Default from "~/layouts/Default.vue";
 import List from "~/layouts/List.vue";
 
@@ -13,7 +12,6 @@ export default function(Vue, { router, head, isClient }) {
   // Set default layout as a global component
   Vue.component("Default", Default);
   Vue.component("List", List);
-  Vue.use(infiniteScroll);
 
   head.link.push(
     {

@@ -64,14 +64,13 @@ export default {
   },
   methods: {
     onScroll() {
-      var offset =
-        this.$refs.card.scrollHeight +
-        this.$refs.card.getBoundingClientRect().top +
-        document.documentElement.scrollTop;
+      var offset = this.$refs.card.scrollHeight + this.$refs.card.offsetTop;
 
       var marginTop = document.getElementById("menu-bar").scrollHeight;
-      offset = offset - marginTop;
-      if (window.scrollY > offset) {
+
+      offset -= marginTop;
+
+      if (document.documentElement.scrollTop > offset) {
         this.$refs.share.style.position = "fixed";
         this.$refs.share.style.marginTop = marginTop + 10 + "px";
       } else {
@@ -81,10 +80,14 @@ export default {
     }
   },
   created() {
-    window.addEventListener("scroll", this.onScroll);
+    if (process.isClient) {
+      window.addEventListener("scroll", this.onScroll);
+    }
   },
   destroyed() {
-    window.removeEventListener("scroll", this.onScroll);
+    if (process.isClient) {
+      window.removeEventListener("scroll", this.onScroll);
+    }
   }
 };
 </script>

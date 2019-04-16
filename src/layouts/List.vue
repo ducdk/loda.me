@@ -1,8 +1,6 @@
 <template>
   <Default :title="title">
-    <div class="container">
-      <ArticleList :articles="articles" :busy="busy"/>
-    </div>
+      <ArticleList :articles="articles" :infinity="infinity"/>
   </Default>
 </template>
 
@@ -20,11 +18,6 @@ export default {
   },
   components: {
     ArticleList
-  },
-  computed: {
-    busy(){
-      return !this.infinity;
-    }
   }
 };
 </script>

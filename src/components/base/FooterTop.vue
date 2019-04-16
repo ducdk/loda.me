@@ -1,5 +1,5 @@
 <template>
-  <div class="footer">
+  <div id="top-footer" class="footer">
     <div class="container">
       <div class="row row-cards row-deck">
         <div class="col-lg-3 ">

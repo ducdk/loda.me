@@ -34,7 +34,6 @@
       </div>
     </div>
 
-
     <div id="menu-bar" ref="menu" class="sticky-menu">
       <div class="header collapse d-lg-flex p-0" id="headerMenuCollapse">
         <div class="container">
@@ -59,8 +58,6 @@
         </div>
       </div>
     </div>
-
-
   </div>
 </template>
 
@@ -82,7 +79,7 @@ export default {
   },
   methods: {
     onMenuScroll() {
-      if (window.scrollY > this.$refs.menu.getBoundingClientRect().top) {
+      if (document.documentElement.scrollTop > this.$refs.menu.offsetTop) {
         this.$refs.menu.style.position = "fixed";
       } else {
         this.$refs.menu.style.position = "relative";
@@ -99,7 +96,7 @@ export default {
 </script>
 
 <style scoped>
-.sticky-menu{
+.sticky-menu {
   width: 100%;
   top: 0px;
   z-index: 2000;

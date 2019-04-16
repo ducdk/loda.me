@@ -6,6 +6,12 @@
     "develop": "gridsome develop",
     "explore": "gridsome explore"
   },
+  "eslintConfig": {
+    "env": {
+      "browser": true,
+      "node": true
+    }
+  },
   "dependencies": {
     "@gridsome/plugin-google-analytics": "^0.1.0",
     "@gridsome/remark-prismjs": "0.0.5",
