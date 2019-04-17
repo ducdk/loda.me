@@ -1,6 +1,6 @@
 <template>
-  <Default>
-    <div class="mt-7">
+  <Default title="Home">
+    <div>
       <div class="row row-cards row-deck">
         <div class="col-lg-4 col-md-6">
           <Card :hideTitle="true" :bodyClass="{'p-0': true}">
@@ -10,7 +10,7 @@
         </div>
 
         <div class="col-lg-8 col-md-6">
-          <Card color="bg-green" title="Mới cập nhật">
+          <Card borderless color="bg-green" title="Mới cập nhật">
             <div
               v-for="(edge, i) in $page.articles.edges.slice(0,7)"
               :key="edge.node.id"
@@ -21,6 +21,24 @@
           </Card>
         </div>
       </div>
+
+      <div class="row">
+        <div class="col-lg-6 pr-6">
+          <InlineList title="Java" :articles="$page.java"/>
+        </div>
+        <div class="col-lg-6 pl-6">
+          <InlineList title="Spring" :articles="$page.spring"/>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-6 pr-6">
+          <InlineList title="Frontend" :articles="$page.frontend"/>
+        </div>
+        <div class="col-lg-6 pl-6">
+          <InlineList title="Others" :articles="$page.other"/>
+        </div>
+      </div>
     </div>
   </Default>
 </template>
@@ -28,6 +46,7 @@
 <script>
 import Card from "~/components/cards/Card.vue";
 import Carousel from "~/components/cards/Carousel.vue";
+import InlineList from "~/components/cards/InlineList.vue";
 
 export default {
   metaInfo: {
@@ -35,21 +54,74 @@ export default {
   },
   components: {
     Card,
-    Carousel
+    Carousel,
+    InlineList
   }
 };
 </script>
 
 <page-query>
 query Article {
-  articles : allArticle(perPage: 100000){
+  articles : allArticle(perPage: 100){
     edges {
       node {
         id
         date (format: "D MMMM, YYYY")
         title
         description
-        image (width: 400, quality: 90)
+        image (width: 400, height: 400, quality: 90)
+        timeToRead
+        path
+      }
+    }
+  }
+  java : allArticle(perPage: 2, filter: { categories: { contains: ["java"] }}){
+    edges {
+      node {
+        id
+        date (format: "D MMMM, YYYY")
+        title
+        description
+        image (width: 400, height: 400, quality: 90)
+        timeToRead
+        path
+      }
+    }
+  }
+  spring : allArticle (perPage: 2, filter: { categories: { contains: ["spring", "spring boot"] }}) {
+    edges {
+      node {
+        id
+        date (format: "D MMMM, YYYY")
+        title
+        description
+        image (width: 400, height: 400, quality: 90)
+        timeToRead
+        path
+      }
+    }
+  }
+  frontend : allArticle (perPage: 2, filter: { categories: { contains: ["web", "frontend"] }}) {
+    edges {
+      node {
+        id
+        date (format: "D MMMM, YYYY")
+        title
+        description
+        image (width: 400, height: 400, quality: 90)
+        timeToRead
+        path
+      }
+    }
+  }
+  other : allArticle (perPage: 2, filter: { categories: { contains: ["general"] }}) {
+    edges {
+      node {
+        id
+        date (format: "D MMMM, YYYY")
+        title
+        description
+        image (width: 400, height: 400, quality: 90)
         timeToRead
         path
       }

@@ -44,7 +44,7 @@ export default {
       description
       date (format: "D MMMM, YYYY")
       content
-      image (width: 350, height: 350, quality: 90)
+      image (width: 350, quality: 90)
       timeToRead 
       path
     }

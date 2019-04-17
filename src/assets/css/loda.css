@@ -21,9 +21,17 @@ code[class*="language-"] {
   box-sizing: border-box;
 }
 
+/* Cho phép select text */
 .token.tag {
   -webkit-user-select: text !important;
   -moz-user-select: text !important;
   -ms-user-select: text !important;
   user-select: text !important;
 }
+
+
+/* Bỏ border của card */
+.card-borderless {
+  border: none !important;
+}
+

@@ -1,5 +1,5 @@
 <template>
-  <div class="card">
+  <div class="card" :class="{'card-borderless': borderless}">
     <!-- status -->
     <div class="card-status" :class="color"></div>
 
@@ -30,10 +30,8 @@ export default {
   name: "Card",
   props: {
     title: String,
-    hideTitle: {
-      type: Boolean,
-      default: false
-    },
+    hideTitle: Boolean,
+    borderless: Boolean,
     color: String,
     bodyClass: Object,
     option: Boolean
