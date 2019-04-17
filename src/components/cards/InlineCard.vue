@@ -4,11 +4,11 @@
       <g-image class="card-img-top" :src="article.image" :alt="article.title"/>
     </g-link>
 
-    <div class="mt-3 d-flex flex-column pr-1">
+    <div class="mt-3 d-flex flex-column">
       <div>
-        <h4>
+        <h5>
           <g-link :to="article.path">{{article.title}}</g-link>
-        </h4>
+        </h5>
       </div>
     </div>
   </div>

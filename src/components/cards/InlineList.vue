@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div v-if="title" class="page-header mt-0">
-      <h1 class="page-title">{{ title }}</h1>
+    <div v-if="title" class="page-header">
+      <h1 class="page-title font-weight-bold"><a href="#">{{ title }}</a></h1>
     </div>
 
     <div class="row row-cards row-deck">
