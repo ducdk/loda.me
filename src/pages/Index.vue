@@ -24,6 +24,41 @@
       </div>
 
       <!-- middle -->
+      <div class="row row-cards row-deck">
+        <!-- hot news -->
+        <div class="col-lg-4">
+          <Card borderless color="bg-orange" title="Xem nhiều">
+            <div
+              v-for="(edge, i) in $page.articles.edges.slice(0,7)"
+              :key="edge.node.id"
+              :ref="'card' + i"
+            >
+              <p>{{edge.node.title}}</p>
+            </div>
+          </Card>
+        </div>
+        <div class="col-lg-8">
+          <div>
+            <div class="btn-list">
+              <a href="#" class="btn btn-blue">Blue</a>
+              <a href="#" class="btn btn-azure">Azure</a>
+              <a href="#" class="btn btn-indigo">Indigo</a>
+              <a href="#" class="btn btn-purple">Purple</a>
+
+              <a href="#" class="btn btn-orange">Orange</a>
+              <a href="#" class="btn btn-yellow">Yellow</a>
+              <a href="#" class="btn btn-lime">Lime</a>
+              <a href="#" class="btn btn-green">Green</a>
+              <a href="#" class="btn btn-teal">Teal</a>
+            </div>
+          </div>
+          <div class="mt-6">
+            <EmailCard/>
+          </div>
+        </div>
+      </div>
+
+      <!-- bottom -->
       <div>
         <div class="row">
           <div class="col-lg-6 pl-6 pr-6">
@@ -40,41 +75,6 @@
           </div>
           <div class="col-lg-6 pl-6 pr-6">
             <InlineList title="Others" :articles="$page.other"/>
-          </div>
-        </div>
-      </div>
-
-      <!-- bottom -->
-      <div class="row row-cards row-deck mt-6">
-        <!-- hot news -->
-        <div class="col-lg-4">
-          <Card borderless color="bg-orange" title="Xem nhiều">
-            <div
-              v-for="(edge, i) in $page.articles.edges.slice(0,7)"
-              :key="edge.node.id"
-              :ref="'card' + i"
-            >
-              <p>{{edge.node.title}}</p>
-            </div>
-          </Card>
-        </div>
-        <div class="col-lg-8">
-          <div >
-            <div class="btn-list">
-              <a href="#" class="btn btn-blue">Blue</a>
-              <a href="#" class="btn btn-azure">Azure</a>
-              <a href="#" class="btn btn-indigo">Indigo</a>
-              <a href="#" class="btn btn-purple">Purple</a>
-
-              <a href="#" class="btn btn-orange">Orange</a>
-              <a href="#" class="btn btn-yellow">Yellow</a>
-              <a href="#" class="btn btn-lime">Lime</a>
-              <a href="#" class="btn btn-green">Green</a>
-              <a href="#" class="btn btn-teal">Teal</a>
-            </div>
-          </div>
-          <div class="mt-6">
-            <EmailCard/>
           </div>
         </div>
       </div>
