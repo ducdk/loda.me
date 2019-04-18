@@ -19,19 +19,23 @@
 </template>
 
 <script>
+import { setTimeout } from "timers";
 export default {
   name: "Carousel",
   props: {
     edges: Array
   },
   mounted() {
-    window.$ = require("jquery");
-
-    $(document).ready(function() {
-      $(".carousel").carousel({
-        interval: 2000
+    if (process.isClient) {
+      window.$ = require("jquery");
+      $(document).ready(function() {
+        setTimeout(function() {
+          $(".carousel").carousel({
+            interval: 2000
+          });
+        }, 3000);
       });
-    });
+    }
   }
 };
 </script>
