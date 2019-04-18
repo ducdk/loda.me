@@ -25,8 +25,12 @@ export default {
     edges: Array
   },
   mounted() {
-    $(".carousel").carousel({
-      interval: 3000
+    window.$ = require("jquery");
+
+    $(document).ready(function() {
+      $(".carousel").carousel({
+        interval: 2000
+      });
     });
   }
 };

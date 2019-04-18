@@ -13,14 +13,14 @@ export default {
 
 <page-query>
 query Article {
-  articles : allArticle (perPage: 100000, filter: { categories: { contains: ["jpa", "hibernate"] }}) {
+  articles : allArticle (perPage: 100000, filter: { categories: { containsAny: ["jpa", "hibernate"] }}) {
     edges {
       node {
         id
         date (format: "D MMMM, YYYY")
         title
         description
-        image (width: 400, quality: 90)
+        image (width: 400, height: 400, quality: 90)
         timeToRead
         path
       }

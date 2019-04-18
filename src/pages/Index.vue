@@ -1,6 +1,6 @@
 <template>
   <Default title="Home">
-    <div>
+    <div class="mb-6">
       <!-- top -->
       <div class="row row-cards row-deck">
         <div class="col-lg-4 col-md-6">
@@ -59,23 +59,16 @@
       </div>
 
       <!-- bottom -->
-      <div>
+      <div class="container">
         <div class="row">
-          <div class="col-lg-6 pl-6 pr-6">
-            <InlineList title="Java" :articles="$page.java"/>
-          </div>
-          <div class="col-lg-6 pl-6 pr-6">
-            <InlineList title="Spring" :articles="$page.spring"/>
-          </div>
+          <InlineList title="Spring Boot" to="/spring-boot" :articles="$page.spring"/>
         </div>
 
         <div class="row">
-          <div class="col-lg-6 pl-6 pr-6">
-            <InlineList title="Frontend" :articles="$page.frontend"/>
-          </div>
-          <div class="col-lg-6 pl-6 pr-6">
-            <InlineList title="Others" :articles="$page.other"/>
-          </div>
+          <InlineList title="Java" to="/java" :articles="$page.java"/>
+        </div>
+        <div class="row">
+          <InlineList title="Others" to="/others" :articles="$page.other"/>
         </div>
       </div>
     </div>
@@ -116,7 +109,7 @@ query Article {
       }
     }
   }
-  java : allArticle(perPage: 2, filter: { categories: { contains: ["java"] }}){
+  java : allArticle(perPage: 4, filter: { categories: { containsAny: ["java"] }}){
     edges {
       node {
         id
@@ -129,7 +122,7 @@ query Article {
       }
     }
   }
-  spring : allArticle (perPage: 2, filter: { categories: { contains: ["spring", "spring boot"] }}) {
+  spring : allArticle (perPage: 4, filter: { categories: { containsAny: ["spring", "spring boot"] }}) {
     edges {
       node {
         id
@@ -142,20 +135,7 @@ query Article {
       }
     }
   }
-  frontend : allArticle (perPage: 2, filter: { categories: { contains: ["web", "frontend"] }}) {
-    edges {
-      node {
-        id
-        date (format: "D MMMM, YYYY")
-        title
-        description
-        image (width: 400, height: 400, quality: 90)
-        timeToRead
-        path
-      }
-    }
-  }
-  other : allArticle (perPage: 2, filter: { categories: { contains: ["general"] }}) {
+  other : allArticle (perPage: 4, filter: { categories: { containsAny: ["general", "web"] }}) {
     edges {
       node {
         id

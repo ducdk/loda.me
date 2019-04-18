@@ -1,19 +1,31 @@
 <template>
   <div>
     <div v-if="title" class="page-header">
-      <h1 class="page-title font-weight-bold"><a href="#">{{ title }}</a></h1>
+      <h1 class="page-title font-weight-bold">
+        <g-link :to="to">{{ title }}</g-link>
+      </h1>
     </div>
 
-    <div class="row row-cards row-deck">
-      <div
-        v-for="(edge, i) in articles.edges"
-        :key="edge.node.id"
-        :ref="'card' + i"
-        class="col-lg-6"
-      >
-        <InlineCard :article="edge.node"/>
+    <div class="row">
+      <div class="col-lg-11">
+        <div class="row row-cards row-deck">
+          <div
+            v-for="(edge, i) in articles.edges"
+            :key="edge.node.id"
+            :class="{'col-lg-6': articles.edges.length ===2, 'col-lg-3' : articles.edges.length > 2 }"
+          >
+            <InlineCard :article="edge.node"/>
+          </div>
+        </div>
       </div>
-
+      <div class="col-lg-1">
+        <div class="box h-100 d-flex justify-content-center flex-column text-center">
+          <g-link :to="to" style="color: #dddde2">
+            <i class="fas fa-angle-right fa-4x"></i>
+            <h4>More</h4>
+          </g-link>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -28,7 +40,8 @@ export default {
   },
   props: {
     articles: Object,
-    title: String
+    title: String,
+    to: String
   }
 };
 </script>

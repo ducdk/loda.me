@@ -7,6 +7,8 @@ import "~/assets/css/loda.css";
 
 import Default from "~/layouts/Default.vue";
 import List from "~/layouts/List.vue";
+import 'jquery'
+import 'bootstrap'
 
 export default function(Vue, { router, head, isClient }) {
   // Set default layout as a global component
@@ -25,20 +27,22 @@ export default function(Vue, { router, head, isClient }) {
     {
       rel: "stylesheet",
       href: "/assets/css/dashboard.css"
-    },
-    {
-      rel: "stylesheet",
-      href: "/assets/plugins/charts-c3/plugin.css"
-    },
-    {
-      rel: "stylesheet",
-      href: "/assets/plugins/maps-google/plugin.css"
     }
   );
   head.script.push({ innerHTML: "var require = { baseUrl:  '/'};" });
   head.script.push(
     { src: "/assets/js/require.min.js" },
-    { src: "/assets/js/dashboard.js" },
+    // { src: "/assets/js/dashboard.js" },
+    // {
+    //   src: "https://code.jquery.com/jquery-3.4.0.slim.js",
+    //   integrity: "sha256-milezx5lakrZu0OP9b2QWFy1ft/UEUK6NH1Jqz8hUhQ=",
+    //   crossorigin: "anonymous"
+    // },
+    // {
+    //   src: "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js",
+    //   integrity: "sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl",
+    //   crossorigin: "anonymous"
+    // }
     // { src: "/assets/js/fb-sdk.js" , async: true, defer: true,},
     // { src: "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2&appId=2157004821059773&autoLogAppEvents=1", async: true, defer: true, crossorigin: "anonymous" }
     // { src: "/assets/plugins/charts-c3/plugin.js" },
