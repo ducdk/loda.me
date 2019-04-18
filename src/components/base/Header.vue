@@ -5,14 +5,9 @@
         <div class="d-flex">
           <g-link class="header-brand" to="/">
             <g-image src="~/assets/images/logo.png" class="header-brand-img" alt="loda logo"/>
-            <!-- <span style="color: #4c4c4c; font-size: 1.1em; font-family: 'Open Sans', sans-serif;">Loda</span> -->
-            <!-- <g-image src="~/assets/images/loda.png" class="header-brand-img" alt="loda logo"/> -->
           </g-link>
-          <!-- <a class="header-brand" href="/index.html">
-            <img src="/demo/brand/tabler.svg" class="header-brand-img" alt="tabler logo">
-          </a>-->
 
-          <div class="d-flex order-lg-2 ml-auto">
+          <!-- <div class="d-flex order-lg-2 ml-auto">
             <div class="nav-item d-none d-md-flex">
               <a
                 :href="$static.metaData.githubUrl"
@@ -20,7 +15,7 @@
                 target="_blank"
               >Source code</a>
             </div>
-          </div>
+          </div> -->
 
           <a
             href="#"
