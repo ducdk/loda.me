@@ -38,21 +38,10 @@
           </Card>
         </div>
         <div class="col-lg-8">
+          <!-- <div>
+            <InlineTagList/>
+          </div> -->
           <div>
-            <div class="btn-list">
-              <a href="#" class="btn btn-blue">Blue</a>
-              <a href="#" class="btn btn-azure">Azure</a>
-              <a href="#" class="btn btn-indigo">Indigo</a>
-              <a href="#" class="btn btn-purple">Purple</a>
-
-              <a href="#" class="btn btn-orange">Orange</a>
-              <a href="#" class="btn btn-yellow">Yellow</a>
-              <a href="#" class="btn btn-lime">Lime</a>
-              <a href="#" class="btn btn-green">Green</a>
-              <a href="#" class="btn btn-teal">Teal</a>
-            </div>
-          </div>
-          <div class="mt-6">
             <EmailCard/>
           </div>
         </div>
@@ -80,6 +69,7 @@ import Card from "~/components/cards/Card.vue";
 import Carousel from "~/components/cards/Carousel.vue";
 import InlineList from "~/components/cards/InlineList.vue";
 import EmailCard from "~/components/cards/EmailCard.vue";
+import InlineTagList from "~/components/cards/InlineTagList.vue";
 
 export default {
   metaInfo: {
@@ -89,7 +79,8 @@ export default {
     Card,
     Carousel,
     InlineList,
-    EmailCard
+    EmailCard,
+    InlineTagList
   }
 };
 </script>
