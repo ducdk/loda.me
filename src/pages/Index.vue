@@ -88,7 +88,7 @@ export default {
 
 <page-query>
 query Article {
-  articles : allArticle(perPage: 100){
+  articles : allArticle(perPage: 7){
     edges {
       node {
         id

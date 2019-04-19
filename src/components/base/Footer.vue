@@ -53,19 +53,7 @@
           </div>
 
           <div class="col-12 col-lg-2 ml-auto text-lg-left mt-4 mt-lg-0">
-            <div
-              id="fb-page"
-              class="fb-page"
-              data-href="https://www.facebook.com/loda.mee/"
-              data-small-header="true"
-              data-adapt-container-width="true"
-              data-hide-cover="false"
-              data-show-facepile="true"
-            >
-              <blockquote cite="https://www.facebook.com/loda.mee/" class="fb-xfbml-parse-ignore">
-                <a href="https://www.facebook.com/loda.mee/">Loda</a>
-              </blockquote>
-            </div>
+            <FBFanpage />
           </div>
         </div>
 
@@ -114,16 +102,12 @@
 
 <script>
 import FooterTop from "~/components/base/FooterTop.vue";
+import FBFanpage from "~/components/plugin/FBFanpage.vue";
 export default {
   name: "Footer",
   components: {
-    FooterTop
-  },
-  mounted() {
-    if (window.FB) {
-      window.FB.XFBML.parse();
-      console.log("Parsed");
-    }
+    FooterTop,
+    FBFanpage
   }
 };
 </script>

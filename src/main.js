@@ -30,7 +30,7 @@ export default function(Vue, { router, head, isClient }) {
       href: "/assets/css/dashboard.css"
     }
   );
-  head.script.push({ innerHTML: "var require = { baseUrl:  '.'};" });
+  head.script.push({ innerHTML: "var require = { baseUrl:  '/'};" });
   head.script.push(
     { src: "/assets/js/require.min.js" },
     { src: "/assets/js/dashboard.js" },
