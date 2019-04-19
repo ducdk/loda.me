@@ -7,7 +7,7 @@ import "~/assets/css/loda.css";
 
 import Default from "~/layouts/Default.vue";
 import List from "~/layouts/List.vue";
-import $ from 'jquery'
+// import $ from 'jquery'
 // import 'bootstrap'
 
 export default function(Vue, { router, head, isClient }) {
@@ -30,10 +30,10 @@ export default function(Vue, { router, head, isClient }) {
       href: "/assets/css/dashboard.css"
     }
   );
-  head.script.push({ innerHTML: "var require = { baseUrl:  '/'};" });
+  head.script.push({ innerHTML: "var require = { baseUrl:  '.'};" });
   head.script.push(
     { src: "/assets/js/require.min.js" },
-    // { src: "/assets/js/dashboard.js" },
+    { src: "/assets/js/dashboard.js" },
     // {
     //   src: "https://code.jquery.com/jquery-3.4.0.slim.js",
     //   integrity: "sha256-milezx5lakrZu0OP9b2QWFy1ft/UEUK6NH1Jqz8hUhQ=",

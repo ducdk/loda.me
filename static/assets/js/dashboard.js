@@ -1,17 +1,17 @@
 require.config({
 shim: {
-// 'bootstrap': ['jquery'],
+'bootstrap': ['jquery'],
 'sparkline': ['jquery'],
 'tablesorter': ['jquery'],
 'vector-map': ['jquery'],
 'vector-map-de': ['vector-map', 'jquery'],
 'vector-map-world': ['vector-map', 'jquery'],
-'core': ['bootstrap'],
-// 'core': ['bootstrap', 'jquery'],
+// 'core': ['bootstrap'],
+'core': ['bootstrap', 'jquery'],
 },
 paths: {
 'core': 'assets/js/core',
-// 'jquery': 'assets/js/vendors/jquery-3.2.1.min',
+'jquery': 'assets/js/vendors/jquery-3.2.1.min',
 'bootstrap': 'assets/js/vendors/bootstrap.bundle.min',
 'sparkline': 'assets/js/vendors/jquery.sparkline.min',
 'selectize': 'assets/js/vendors/selectize.min',
