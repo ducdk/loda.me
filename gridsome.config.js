@@ -18,6 +18,14 @@ module.exports = {
       }
     },
     {
+      use: "@gridsome/source-filesystem",
+      options: {
+        path: "article/_hot/**/*.md",
+        typeName: "HotArticle",
+        route: "/hot/:slug"
+      }
+    },
+    {
       use: '@gridsome/plugin-google-analytics',
       options: {
         id: 'UA-XXXXXXXXX-X'

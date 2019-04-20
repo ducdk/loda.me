@@ -4,45 +4,25 @@
       <!-- top -->
       <div class="row row-cards">
         <div class="col-lg-4 col-md-6">
+          <!-- Carousel -->
           <Card borderless :hideTitle="true" :bodyClass="{'p-0': true}">
-            <!-- <g-image :src="$page.articles.edges[0].node.image"/> -->
             <Carousel :edges="$page.articles.edges.slice(0,7)"/>
           </Card>
-          <Card borderless color="bg-orange" title="Xem nhiều" bodyClass="p-0">
-            <ListPostTable :showDate="false" :articles="$page.articles"/>
+
+          <!-- HOT TOPIC -->
+          <Card borderless color="bg-orange" title="Xem nhiều" :bodyClass="{'p-0': true}">
+            <ListPostTable :showDate="false" :articles="$page.hots"/>
           </Card>
         </div>
 
         <div class="col-lg-8 col-md-6">
-          <Card borderless color="bg-green" title="Mới cập nhật" bodyClass="p-0">
+          <!-- NEWS -->
+          <Card borderless color="bg-green" title="Mới cập nhật" :bodyClass="{'p-0': true}">
             <ListPostTable :articles="$page.articles"/>
-            
           </Card>
-          <EmailCard/>
-        </div>
-      </div>
 
-      <!-- middle -->
-      <div class="row row-cards">
-        <!-- hot news -->
-        <div class="col-lg-4">
-          <!-- <Card borderless color="bg-orange" title="Xem nhiều">
-            <div
-              v-for="(edge, i) in $page.articles.edges.slice(0,7)"
-              :key="edge.node.id"
-              :ref="'card' + i"
-            >
-              <p>{{edge.node.title}}</p>
-            </div>
-          </Card>-->
-        </div>
-        <div class="col-lg-8">
-          <!-- <div>
-            <InlineTagList/>
-          </div>-->
-          <div>
-            <!-- <EmailCard/> -->
-          </div>
+          <!-- EMAIL GIFTCARD -->
+          <EmailCard/>
         </div>
       </div>
 
@@ -89,6 +69,19 @@ export default {
 <page-query>
 query Article {
   articles : allArticle(perPage: 7){
+    edges {
+      node {
+        id
+        date (format: "D MMMM, YYYY")
+        title
+        description
+        image (width: 400, height: 400, quality: 90)
+        timeToRead
+        path
+      }
+    }
+  }
+  hots : allHotArticle(perPage: 7){
     edges {
       node {
         id

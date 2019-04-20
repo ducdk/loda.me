@@ -5,30 +5,28 @@
 <script>
 export default {
   name: "FbPlugin",
-  metaInfo: {
-    script: [
-      {
-        src:
-          "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2&appId=2157004821059773&autoLogAppEvents=1",
-        async: true,
-        defer: true,
-        crossorigin: "anonymous"
-      }
-    ]
-  },
   mounted() {
-    // window.fbAsyncInit = function() {
-    //   //   FB.init({
-    //   //     appId: "2157004821059773",
-    //   //     autoLogAppEvents: true,
-    //   //     xfbml: true,
-    //   //     version: "v3.2"
-    //   //   });
-    //   console.log("parsing");
-    //   FB.XFBML.parse();
-    //   console.log("parsing done");
-    // };
-   
+    if (process.isClient) {
+      window.$ = require("jquery");
+      $(document).ready(function() {
+        let fbScript = document.createElement("script");
+        fbScript.setAttribute(
+          "src",
+          "https://connect.facebook.net/en_US/sdk.js"
+        );
+        document.head.appendChild(fbScript);
+        window.FB = null;
+        window.fbAsyncInit = function() {
+          FB.init({
+            appId: "2157004821059773",
+            autoLogAppEvents: true,
+            xfbml: false,
+            version: "v3.2"
+          });
+          FB.XFBML.parse();
+        };
+      });
+    }
   }
 };
 </script>

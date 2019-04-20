@@ -18,30 +18,6 @@
 
 <script>
 export default {
-  name: "FBFanpage",
-  mounted() {
-    if (process.isClient) {
-      window.$ = require("jquery");
-      $(document).ready(function() {
-        // $("#fbComment").remove();
-        FB.XFBML.parse(document.getElementById("fb-page-wrapper"), function() {
-          $("#fb-page")
-            .find("span")
-            .addClass("fb-fanpage-bug");
-          $("#fb-page")
-            .find("iframe")
-            .addClass("fb-fanpage-bug");
-        });
-      });
-    }
-  }
+  name: "FBFanpage"
 };
 </script>
-
-
-<style>
-.fb-fanpage-bug {
-  width: 180px !important;
-  height: 170px !important;
-}
-</style>

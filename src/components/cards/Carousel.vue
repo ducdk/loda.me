@@ -28,12 +28,11 @@ export default {
   mounted() {
     if (process.isClient) {
       window.$ = require("jquery");
+      require("bootstrap");
       $(document).ready(function() {
-        setTimeout(function() {
-          $(".carousel").carousel({
-            interval: 2000
-          });
-        }, 3000);
+        $(".carousel").carousel({
+          interval: 2000
+        });
       });
     }
   }
