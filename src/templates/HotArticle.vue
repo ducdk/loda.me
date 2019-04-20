@@ -26,13 +26,20 @@ import FbComment from "~/components/plugin/FbComment.vue";
 export default {
   metaInfo() {
     return {
-      title: this.$page.hotArticle.title
+      title: this.$page.hotArticle.title,
+      meta: [
+        { property: "og:url", content: this.$page.hotArticle.path },
+        { property: "og:type", content: "article" },
+        { property: "og:title", content: this.$page.hotArticle.title },
+        { property: "og:description", content: this.$page.hotArticle.description },
+        { property: "og:image", content: this.$page.hotArticle.image }
+      ]
     };
   },
   components: {
     ArticleContentCard,
     ArticleDescriptionCard,
-    FbComment,
+    FbComment
   }
 };
 </script>
@@ -44,7 +51,7 @@ export default {
       description
       date (format: "D MMMM, YYYY")
       content
-      image (width: 350, quality: 90)
+      image (width: 400, quality: 90)
       timeToRead 
       path
     }
