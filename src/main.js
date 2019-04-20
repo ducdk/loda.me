@@ -32,13 +32,13 @@ export default function(Vue, { router, head, isClient }) {
       href: "/assets/css/dashboard.css"
     }
   );
-  head.script.push({ innerHTML: "var require = { baseUrl:  '/'};" });
-  head.script.push(
-    { src: "/assets/js/require.min.js" },
-    // { src: "/assets/js/dashboard.js" },
-    // { src: "/assets/plugins/charts-c3/plugin.js" },
-    // { src: "/assets/plugins/maps-google/plugin.js" },
-    // { src: "/assets/plugins/input-mask/plugin.js" },
-    // { src: "/assets/plugins/datatables/plugin.js" }
-  );
+  // head.script.push({ innerHTML: "var require = { baseUrl:  '/'};" });
+  // head.script.push(
+  //   { src: "/assets/js/require.min.js" },
+  //   // { src: "/assets/js/dashboard.js" },
+  //   // { src: "/assets/plugins/charts-c3/plugin.js" },
+  //   // { src: "/assets/plugins/maps-google/plugin.js" },
+  //   // { src: "/assets/plugins/input-mask/plugin.js" },
+  //   // { src: "/assets/plugins/datatables/plugin.js" }
+  // );
 }
