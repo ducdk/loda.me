@@ -6,7 +6,15 @@
           <g-link class="header-brand" to="/">
             <g-image src="~/assets/images/logo.png" class="header-brand-img" alt="loda logo"/>
           </g-link>
-
+          <div class="d-flex order-lg-2 ml-auto">
+            <!-- <div class="nav-item d-none d-md-flex">
+              <a
+                href="https://github.com/tabler/tabler"
+                class="btn btn-sm btn-outline-primary"
+                target="_blank"
+              >Source code</a>
+            </div> -->
+          </div>
           <a
             href="#"
             class="header-toggler d-lg-none ml-3 ml-lg-0"
