@@ -8,6 +8,7 @@ const nodeExternals = require('webpack-node-externals')
 module.exports = {
   siteName: "loda.me",
   siteUrl: "https://loda.me",
+  titleTemplate: '%s - loda.me',
   siteDescription: "Chia sẻ, hướng dẫn lập trình miễn phí và chất lượng nhất.",
 
   chainWebpack(config, { isServer }) {
