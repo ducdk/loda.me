@@ -1,6 +1,6 @@
 <template>
   <Default :title="title">
-      <ArticleList :articles="articles" :infinity="infinity"/>
+    <ArticleList :containsAny="containsAny" :infinity="infinity"/>
   </Default>
 </template>
 
@@ -9,12 +9,12 @@ import ArticleList from "~/components/article/ArticleList.vue";
 
 export default {
   props: {
-      title: String,
-      articles: Object,
-      infinity: {
-        type: Boolean,
-        default: true
-      }
+    title: String,
+    containsAny: Array,
+    infinity: {
+      type: Boolean,
+      default: true
+    }
   },
   components: {
     ArticleList
