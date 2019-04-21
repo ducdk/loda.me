@@ -39,7 +39,7 @@ module.exports = {
       options: {
         path: "article/_hot/**/*.md",
         typeName: "HotArticle",
-        route: "/hot/:slug"
+        route: "/en/:slug"
       }
     },
     {
