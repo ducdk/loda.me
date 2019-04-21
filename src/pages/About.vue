@@ -61,7 +61,17 @@
 import Card from "~/components/cards/Card.vue";
 export default {
   metaInfo: {
-    title: "About"
+    title: "About",
+    meta: [
+      { property: "og:url", content: "/" },
+      { property: "og:type", content: "article" },
+      { property: "og:title", content: "About" },
+      {
+        property: "og:description",
+        content: "Chia sẻ, hướng dẫn lập trình miễn phí và chất lượng nhất."
+      },
+      { property: "og:image", content: "" }
+    ]
   },
   components: {
     Card
