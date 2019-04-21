@@ -7,6 +7,7 @@
         </div>
         <hr>
         <div class="article-body" v-html="cleanedContent"/>
+        <FbLike :href="article.path" />
       </div>
     </div>
   </div>
@@ -14,15 +15,20 @@
 
 
 <script>
+import FbLike from "~/components/plugin/FbLike.vue";
+
 export default {
   name: "ArticleContentCard",
+  components: {
+    FbLike
+  },
   props: {
     article: Object
   },
-  computed:{
-      cleanedContent(){
-          return this.article.content.replace(/{:class="center-image"}/g, '', 'g');
-      }
+  computed: {
+    cleanedContent() {
+      return this.article.content.replace(/{:class="center-image"}/g, "", "g");
+    }
   }
 };
 </script>
@@ -30,10 +36,9 @@ export default {
 
 <style>
 .article-body {
-  
 }
 
-div.article-body >p > img {
+div.article-body > p > img {
   margin: 0 auto;
   display: block;
 }
