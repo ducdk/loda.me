@@ -23,6 +23,8 @@ module.exports = {
       }))
     }
   },
+
+
   plugins: [
     {
       use: "@gridsome/source-filesystem",
@@ -41,9 +43,12 @@ module.exports = {
       }
     },
     {
+      use: '@gridsome/plugin-sitemap'
+    },
+    {
       use: "@gridsome/plugin-google-analytics",
       options: {
-        id: "UA-XXXXXXXXX-X"
+        id: "UA-135687402-1"
       }
     }
   ],
