@@ -6,6 +6,14 @@
           <h2 class="mt-2">{{ article.title }}</h2>
         </div>
         <hr>
+        <div class="row">
+          <ol class="px-4 mx-3 mb-0">
+            <li v-for="item in internalPageAnchorQuery" :key="item.id">
+              <a :href="'#'+item.id" class="h6">{{ item.title }}</a>
+            </li>
+          </ol>
+        </div>
+        <hr>
         <div class="article-body" v-html="cleanedContent"/>
         <FbLike :href="article.path" />
       </div>
@@ -28,6 +36,15 @@ export default {
   computed: {
     cleanedContent() {
       return this.article.content.replace(/{:class="center-image"}/g, "", "g");
+    },
+    internalPageAnchorQuery() {
+      let parse = new DOMParser();
+      let html = parse.parseFromString(this.article.content, "text/html");
+      return Array.from(html.documentElement.querySelectorAll("h3")).map(element => ({
+          id: element.id,
+          title: element.textContent
+        })
+      );
     }
   }
 };
