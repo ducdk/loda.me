@@ -6,6 +6,14 @@
           <h2 class="mt-2">{{ article.title }}</h2>
         </div>
         <hr>
+        <div class="row">
+          <ol class="px-4 mx-3 mb-0">
+            <li v-for="item in internalPageAnchorQuery" :key="item.id">
+              <a :href="'#'+item.id" class="h6">{{ item.title }}</a>
+            </li>
+          </ol>
+        </div>
+        <hr>
         <div class="article-body" v-html="cleanedContent"/>
       </div>
     </div>
@@ -19,10 +27,20 @@ export default {
   props: {
     article: Object
   },
-  computed:{
-      cleanedContent(){
-          return this.article.content.replace(/{:class="center-image"}/g, '', 'g');
-      }
+  computed: {
+    cleanedContent() {
+      return this.article.content.replace(/{:class="center-image"}/g, "", "g");
+    },
+    internalPageAnchorQuery() {
+      let parse = new DOMParser();
+      let html = parse.parseFromString(this.article.content, "text/html");
+      return Array.from(html.documentElement.querySelectorAll("h3")).map(element => ({
+          id: element.id,
+          title: element.textContent
+        })
+      );
+      // console.log(this.internalPageAnchor);
+    }
   }
 };
 </script>
@@ -30,10 +48,9 @@ export default {
 
 <style>
 .article-body {
-  
 }
 
-div.article-body >p > img {
+div.article-body > p > img {
   margin: 0 auto;
   display: block;
 }
