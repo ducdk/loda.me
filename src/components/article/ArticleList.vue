@@ -17,17 +17,12 @@
 
 <script>
 import ArticleCard from "~/components/article/ArticleCard.vue";
-import axios from "axios";
 
 export default {
   name: "ArticleList",
   props: {
-    infinity: Boolean,
-    perPage: {
-      type: String,
-      default: "10"
-    },
-    containsAny: Array
+    articles: Object,
+    infinity: Boolean
   },
   components: {
     ArticleCard
@@ -35,48 +30,22 @@ export default {
   data() {
     return {
       datas: [],
-      page: 1,
-      busy: false,
-      query:
-        `query Article ($page: Int) {
-  articles : allArticle (page: $page, perPage: ` +
-        this.perPage +
-        `, filter: { categories: { containsAny: ["` +
-        this.containsAny.join('","') +
-        `"] }}) {
-    edges {
-      node {
-        id
-        date (format: "D MMMM, YYYY")
-        title
-        description
-        image (width: 400, height: 400, quality: 90)
-        timeToRead
-        path
-      }
-    }
-  }
-}`
+      page: 0,
+      busy: false
     };
   },
   methods: {
     loadMore() {
-      if (!this.busy) {
-        axios
-          .post("/___graphql", {
-            query: this.query,
-            variables: {
-              page: this.page
-            }
-          })
-          .then(res => {
-            if (res.data.data.articles.edges.length > 0) {
-              this.datas = [...this.datas, ...res.data.data.articles.edges];
-            } else {
-              this.busy = true;
-            }
-          });
-        this.page++;
+      if (!this.busy && this.articles.edges.length > this.page * 10) {
+        setTimeout(() => {
+          this.datas = [
+            ...this.datas,
+            ...this.articles.edges.slice(this.page * 10, this.page * 10 + 10)
+          ];
+          this.page += 1;
+        }, 200);
+      } else {
+        this.busy = true;
       }
     },
     onScroll() {
@@ -89,7 +58,8 @@ export default {
     }
   },
   created() {
-    this.loadMore();
+    this.datas = this.articles.edges.slice(0, 10);
+    this.page += 1;
     if (process.isClient && this.infinity) {
       window.addEventListener("scroll", this.onScroll);
     }

@@ -12,7 +12,7 @@
           <div
             v-for="(edge, i) in articles.edges"
             :key="edge.node.id"
-            class="col-lg-3 col-md-6"
+            class="col-lg-3 col-md-3"
           >
             <InlineCard :article="edge.node"/>
           </div>
