@@ -53,7 +53,17 @@ import InlineTagList from "~/components/cards/InlineTagList.vue";
 
 export default {
   metaInfo: {
-    title: "Loda.me!"
+    title: "Home",
+    meta: [
+      { property: "og:url", content: "/" },
+      { property: "og:type", content: "article" },
+      { property: "og:title", content: "Loda.me" },
+      {
+        property: "og:description",
+        content: "Chia sẻ, hướng dẫn lập trình miễn phí và chất lượng nhất."
+      },
+      { property: "og:image", content: "" }
+    ]
   },
   components: {
     Card,

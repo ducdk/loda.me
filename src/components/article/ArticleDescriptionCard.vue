@@ -43,7 +43,7 @@
       <p>{{ article.description }}</p>
 
       <div class="sticky-top" ref="share">
-        <SocialShare/>
+        <SocialShare :href="article.path" :title="article.title"/>
       </div>
     </div>
   </div>

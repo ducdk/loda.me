@@ -7,18 +7,18 @@
     </div>
 
     <div class="row">
-      <div class="col-lg-11">
+      <div class="col-lg-11 col-md-11">
         <div class="row row-cards row-deck">
           <div
             v-for="(edge, i) in articles.edges"
             :key="edge.node.id"
-            :class="{'col-lg-6': articles.edges.length ===2, 'col-lg-3' : articles.edges.length > 2 }"
+            class="col-lg-3 col-md-3"
           >
             <InlineCard :article="edge.node"/>
           </div>
         </div>
       </div>
-      <div class="col-lg-1">
+      <div class="col-lg-1 col-md-1">
         <div class="box h-100 d-flex justify-content-center flex-column text-center">
           <g-link :to="to" style="color: #dddde2">
             <i class="fas fa-angle-right fa-4x"></i>

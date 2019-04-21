@@ -15,6 +15,7 @@
         </div>
         <hr>
         <div class="article-body" v-html="cleanedContent"/>
+        <FbLike :href="article.path" />
       </div>
     </div>
   </div>
@@ -22,8 +23,13 @@
 
 
 <script>
+import FbLike from "~/components/plugin/FbLike.vue";
+
 export default {
   name: "ArticleContentCard",
+  components: {
+    FbLike
+  },
   props: {
     article: Object
   },
@@ -39,7 +45,6 @@ export default {
           title: element.textContent
         })
       );
-      // console.log(this.internalPageAnchor);
     }
   }
 };

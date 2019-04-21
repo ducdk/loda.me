@@ -6,7 +6,17 @@
 
 export default {
   metaInfo: {
-    title: "Frontend"
+    title: "Frontend",
+    meta: [
+      { property: "og:url", content: "/" },
+      { property: "og:type", content: "article" },
+      { property: "og:title", content: "Frontend" },
+      {
+        property: "og:description",
+        content: "Chia sẻ, hướng dẫn lập trình miễn phí và chất lượng nhất."
+      },
+      { property: "og:image", content: "" }
+    ]
   }
 };
 </script>
