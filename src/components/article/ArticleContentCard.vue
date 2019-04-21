@@ -38,13 +38,15 @@ export default {
       return this.article.content.replace(/{:class="center-image"}/g, "", "g");
     },
     internalPageAnchorQuery() {
-      let parse = new DOMParser();
-      let html = parse.parseFromString(this.article.content, "text/html");
-      return Array.from(html.documentElement.querySelectorAll("h3")).map(element => ({
-          id: element.id,
-          title: element.textContent
-        })
-      );
+      if (process.isClient) {
+        let parse = new DOMParser();
+        let html = parse.parseFromString(this.article.content, "text/html");
+        return Array.from(html.documentElement.querySelectorAll("h3")).map(element => ({
+            id: element.id,
+            title: element.textContent
+          })
+        );
+      }
     }
   }
 };
