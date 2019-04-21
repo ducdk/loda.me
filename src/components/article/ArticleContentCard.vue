@@ -9,13 +9,13 @@
         <div class="row">
           <ol class="px-4 mx-3 mb-0">
             <li v-for="item in internalPageAnchorQuery" :key="item.id">
-              <a :href="'#'+item.id" class="h6">{{ item.title }}</a>
+              <a class="h6">{{ item.title }}</a>
             </li>
           </ol>
         </div>
         <hr>
         <div class="article-body" v-html="cleanedContent"/>
-        <FbLike :href="article.path" />
+        <FbLike :href="article.path"/>
       </div>
     </div>
   </div>
@@ -38,13 +38,16 @@ export default {
       return this.article.content.replace(/{:class="center-image"}/g, "", "g");
     },
     internalPageAnchorQuery() {
-      let parse = new DOMParser();
-      let html = parse.parseFromString(this.article.content, "text/html");
-      return Array.from(html.documentElement.querySelectorAll("h3")).map(element => ({
-          id: element.id,
-          title: element.textContent
-        })
-      );
+      if (process.isClient) {
+        let parse = new DOMParser();
+        let html = parse.parseFromString(this.article.content, "text/html");
+        return Array.from(html.documentElement.querySelectorAll("h1, h2, h3, h4, h5, h6")).map(
+          element => ({
+            id: element.id,
+            title: element.textContent
+          })
+        );
+      }
     }
   }
 };
