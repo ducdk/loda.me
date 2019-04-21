@@ -5,7 +5,7 @@
         v-for="(edge, i) in datas"
         :key="edge.node.id"
         :ref="'card' + i"
-        class="col-sm-6 col-xl-3"
+        class="col-lg-3 col-md-6 col-xl-3"
       >
         <!-- <div v-for="edge in articles.edges" :key="edge.node.id" class="col-lg-6"> -->
         <ArticleCard type="image" :article="edge.node"/>
