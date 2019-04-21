@@ -23,6 +23,8 @@ module.exports = {
       }))
     }
   },
+
+
   plugins: [
     {
       use: "@gridsome/source-filesystem",
@@ -37,13 +39,16 @@ module.exports = {
       options: {
         path: "article/_hot/**/*.md",
         typeName: "HotArticle",
-        route: "/hot/:slug"
+        route: "/en/:slug"
       }
+    },
+    {
+      use: '@gridsome/plugin-sitemap'
     },
     {
       use: "@gridsome/plugin-google-analytics",
       options: {
-        id: "UA-XXXXXXXXX-X"
+        id: "UA-135687402-1"
       }
     }
   ],
